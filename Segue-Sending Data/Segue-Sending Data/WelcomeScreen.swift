@@ -21,8 +21,11 @@ class WelcomeScreen: UIViewController {
     
     @IBAction func changeName(_ sender: Any) {
         print("Click")
-        performSegue(withIdentifier: "changeUserName", sender: detailName.text)
+//        performSegue(withIdentifier: "changeUserName", sender: "Changed Username")
+        
     }
+    
+    
     
     private func setUpUI(){
         detailName.text = "Welcome "+user.getUserName()
@@ -31,18 +34,8 @@ class WelcomeScreen: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "changeUserName"{
             let loginScreen = segue.destination as! LoginScreenViewController
-            loginScreen.changedUserName = sender as! String
+            loginScreen.changedUserName = detailName.text ?? ""
         }
     }
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

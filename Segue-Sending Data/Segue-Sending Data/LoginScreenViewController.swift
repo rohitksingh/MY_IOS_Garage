@@ -15,7 +15,7 @@ class LoginScreenViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     
-    var changedUserName: String = ""
+    var changedUserName: String=""
     
     override func viewDidLoad() {
         super.viewDidLoad()
