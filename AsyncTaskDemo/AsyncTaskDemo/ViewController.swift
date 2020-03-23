@@ -9,12 +9,31 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var counter: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        counter.text = "start"
+        count()
     }
+    
+    
+    func count(){
+        
+        DispatchQueue.global(qos: .userInteractive).async {
 
+            for i in 1...10{
+                sleep(1)
+                DispatchQueue.main.async {
+                    self.counter.text = i.description
+                }
+                
+            }
+            
+        }
+        
+    }
 
 }
 
