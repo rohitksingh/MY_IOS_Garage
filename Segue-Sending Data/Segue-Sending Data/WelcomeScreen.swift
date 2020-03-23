@@ -13,16 +13,26 @@ class WelcomeScreen: UIViewController {
     var user: User!
     
     @IBOutlet weak var detailName: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpUI()
     }
     
     @IBAction func changeName(_ sender: Any) {
+        print("Click")
+        performSegue(withIdentifier: "changeUserName", sender: detailName.text)
     }
     
     private func setUpUI(){
         detailName.text = "Welcome "+user.getUserName()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "changeUserName"{
+            let loginScreen = segue.destination as! LoginScreenViewController
+            loginScreen.changedUserName = sender as! String
+        }
     }
     
     /*

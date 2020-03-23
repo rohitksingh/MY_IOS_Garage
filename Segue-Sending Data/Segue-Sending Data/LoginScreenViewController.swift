@@ -15,6 +15,8 @@ class LoginScreenViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var confirmPassword: UITextField!
     
+    var changedUserName: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }
@@ -44,6 +46,20 @@ class LoginScreenViewController: UIViewController {
             let welcomScreen = segue.destination as! WelcomeScreen
             welcomScreen.user = sender as? User
         }
+    }
+    
+    @IBAction func unwindToLoginSceen( segue: UIStoryboardSegue) {
+        
+        if(segue.identifier=="changeUserName"){
+            chaneUserName(changedUsername: changedUserName)
+        }
+        
+        
+        // Use data from the view controller which initiated the unwind segue
+    }
+    
+    func chaneUserName(changedUsername: String){
+        usernameTextField.text = changedUsername
     }
 
 }
